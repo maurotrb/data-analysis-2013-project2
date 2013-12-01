@@ -1,0 +1,58 @@
+Exploration
+===========
+
+Project startup
+---------------
+
+Setting knitr options.
+
+``` {r knitr_options}
+require(knitr)
+opts_knit$set(root.dir="..")
+opts_chunk$set(fig.path="../graphs/expl-")
+```
+
+Load required libraries.
+```{r load_libraries, warning=FALSE}
+require(Hmisc)
+require(RColorBrewer)
+```
+Load project with ProjectTemplate.
+
+```{r load_project, warning=FALSE}
+require(ProjectTemplate)
+reload.project()
+```
+
+Subsetting training and testing data
+------------------------------------
+
+```{r subset_data}
+recordsForTraining <- samsungData$subject > 26
+recordsForTesting  <- samsungData$subject < 7
+training <- samsungData[recordsForTraining,]
+test     <- samsungData[recordsForTesting,]
+```
+
+Histogram and Boxplot for each column
+-------------------------------------
+
+```{r hist_box_cols}
+numberVars <- ncol(training) - 2
+digits <- nchar(as.character(numberVars))
+pad <- ""; for(i in 1:digits) pad = paste(pad, "0", sep="")
+pb <- txtProgressBar(style=3)
+for (i in 1:numberVars){
+  number = paste(pad, i, sep="");
+  number = substring(number, nchar(number)-digits+1)
+  filename = paste("graphs/plots/",number,".png", sep="")
+  png(filename, width=960)
+  par(mfrow = c(1, 2))
+  hist(training[,i], main=paste(number,names(training)[i]),
+       xlab=paste("training[,",i,"]",sep=""))
+  boxplot(training[,i] ~ training$activity, main=paste(number,names(training)[i]))
+  dev.off()
+  setTxtProgressBar(pb, i/numberVars)
+}
+close(pb)
+```
