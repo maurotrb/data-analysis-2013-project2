@@ -14,8 +14,7 @@ opts_chunk$set(fig.path="../graphs/expl-")
 
 Load required libraries.
 ```{r load_libraries, warning=FALSE}
-require(Hmisc)
-require(RColorBrewer)
+require(tree)
 ```
 Load project with ProjectTemplate.
 
