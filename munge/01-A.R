@@ -2,7 +2,7 @@
 colnames(samsungData) <- gsub('\\(|\\)',"",names(samsungData), perl = TRUE)
 colnames(samsungData) <- make.names(names(samsungData))
 
-## @knitr duplicate_cols
+## @knitr repeated_cols
 colnames(samsungData)[303:316] = paste(colnames(samsungData)[303:316],".X",sep="")
 colnames(samsungData)[317:330] = paste(colnames(samsungData)[317:330],".Y",sep="")
 colnames(samsungData)[331:344] = paste(colnames(samsungData)[331:344],".Z",sep="")

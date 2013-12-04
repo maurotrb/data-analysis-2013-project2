@@ -1,0 +1,57 @@
+Munge
+=====
+
+Tidying data before exploration and analysis.
+
+Startup
+-------
+
+Setting knitr options.
+``` {r knitr_options}
+require(knitr)
+opts_knit$set(root.dir="..")
+opts_chunk$set(fig.path="../graphs/munge-")
+```
+
+Load required libraries.
+```{r load_libraries, warning=FALSE}
+```
+Load project with ProjectTemplate.
+```{r load_project, warning=FALSE}
+require(ProjectTemplate)
+reload.project()
+```
+
+Load munge R script.
+```{r external_code}
+read_chunk("munge/01-A.R")
+```
+
+Invalid column names
+--------------------
+Some columns contain invalid characters such as parentheses `()`, dash `-` and
+comma `,`.
+
+Parentheses are deleted, dashes and commas are substituted with dots.
+```{r, eval=FALSE}
+<<invalid_cols>>
+```
+
+Repeated column names
+---------------------
+Some column names are repeated three times. Presumably they refer to X, Y, Z axis.
+
+The columns are suffixed with axis symbols, giving to the first occurrence the symbol
+`.X`, to the second occurrence the symbol `.Y`, and to the third occurrence the symbol
+`.Z`.
+```{r, eval=FALSE}
+<<repeated_cols>>
+```
+
+Activity to factor
+------------------
+Activity is converted to factor.
+
+```{r, eval=FALSE}
+<<activity_factor>>
+```
