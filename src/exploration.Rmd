@@ -65,3 +65,16 @@ summary(treeAllCols)
 plot(treeAllCols, type="uniform")
 text(treeAllCols)
 ```
+
+```{r tree_all_misc, fig.width=12, fig.height=6}
+par(mfrow=c(1,2))
+plot(cv.tree(treeAllCols, FUN=prune.tree, method="misclass"))
+plot(cv.tree(treeAllCols))
+```
+
+```{r tree_all_pruned, fig.width=12, fig.height=10}
+pruneTreeAllCols <- prune.tree(treeAllCols, best=8)
+summary(pruneTreeAllCols)
+plot(pruneTreeAllCols, type="uniform")
+text(pruneTreeAllCols)
+```
