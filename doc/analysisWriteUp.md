@@ -21,7 +21,9 @@ Methods
 
 ### Data Collection
 Data were obtained from UCI Machine Learning repository. In particular we used
-the *Human Activity Recognition Using Smartphones Data Set* [[1](#uci-har)].
+the *Human Activity Recognition Using Smartphones Data Set* [[1](#uci-har)],
+that was used by the original collectors to conduct some experiments exploiting
+Support Vector Machine (SVM) [[1](#har-smart)].
 
 The dataset was built from experiments carried out with a group of 30 volunteers
 within an age bracket of 19-48 years. Each person performed six activities
@@ -32,8 +34,9 @@ were captured at a constant rate of 50Hz. The experiments have been video-record
 to label the data manually [[1](#har-smart2)].
 
 #### Signals
-The 3-axial time domain [[1](#time-domain)] signals from accelerometer and gyroscope were captured
-at a constant rate of 50 Hz [[1](#hertz)]. Then they were filtered to remove noise.
+The 3-axial time domain [[1](#time-domain)] signals from accelerometer and gyroscope
+were captured at a constant rate of 50 Hz [[1](#hertz)]. Then they were filtered
+to remove noise.
 Similarly, the acceleration signal was then separated into body and gravity
 acceleration signals using another filter.
 Subsequently, the body linear acceleration and angular velocity were derived in time
@@ -59,8 +62,10 @@ Body Angular Speed Magnitude          | tBodyGyroMag      | fBodyGyroMag
 Body Angular Acceleration Magnitude   | tBodyGyroJerkMag  | fBodyGyroJerkMag
 
 #### Features
-The signals were sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window).
-From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+The signals were sampled in fixed-width sliding windows of 2.56 sec and 50% 
+overlap (128 readings/window).
+From each window, a vector of features was obtained by calculating variables
+from the time and frequency domain.
 
 The set of variables that were estimated from these signals are: 
 
@@ -79,27 +84,32 @@ The set of variables that were estimated from these signals are:
 *  meanFreq(): Weighted average of the frequency components to obtain a mean frequency
 *  skewness(): Skewness of the frequency domain signal 
 *  kurtosis(): Kurtosis of the frequency domain signal 
-*  bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+*  bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT
+   of each window.
 *  angle(): Angle between some vectors.
 
-No unit of measures is reported as all features were __normalized and bounded within [-1,1]__.
+No unit of measures is reported as all features were __normalized and bounded
+within [-1,1]__.
 
-#### Dataset
-Each record in the dataset contains:
+#### Dataset details
+The dataset was slightly processed for the Coursera Data Analysis course, and
+it is available from the course website: 
 
-*  a 561-feature vector with time and frequency domain variables. 
-*  its activity label: laying, sitting standing, walk, walkdown, walkup
+<https://spark-public.s3.amazonaws.com/dataanalysis/samsungData.rda>
+
+The dataset contains 7352 observation with 563 variables divided in:
+
+*  a 561-feature vector with time and frequency domain variables (numeric)
+*  an activity label: laying, sitting standing, walk, walkdown, walkup
 *  an identifier of the subject who carried out the experiment:
    1, 3, 5, 6, 7, 8, 11, 14, 15, 16, 17, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30
 
-The dataset was used by the original collectors to conduct some experiments
-exploiting Support Vector Machine (SVM) [[1](#har-smart)].
-
 ### Exploratory Analysis
-
+Exploratory analysis was performed by examining tables and plots of the sample data.
 
 ### Statistical Modeling
-
+To relate activity to features we used a prediction tree, and in particular a
+classification tree [[1](#class-tree)]. We used the `tree` R package [[1](#r-tree)].
 
 ### Reproducibility
 
@@ -152,3 +162,7 @@ Other references:
     Accessed 12/02/2013
 1.  <a name="freq-domain"/>Frequency domain. URL: <http://en.wikipedia.org/wiki/Frequency_domain>.
     Accessed 12/02/2013
+1.  <a name="r-tree"/>tree: Classification and regression trees. URL: <http://cran.r-project.org/web/packages/tree/index.html>.
+    Accessed 12/02/2013
+1.  <a name="class-tree"/>Cosma Shalizi. Classification and Regression Trees. Statistics 36-350: Data Mining.
+    URL: <http://www.stat.cmu.edu/~cshalizi/350/lectures/22/lecture-22.pdf>. Accessed 12/02/2013
