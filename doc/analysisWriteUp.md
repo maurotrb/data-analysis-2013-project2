@@ -7,14 +7,13 @@ Activity recognition (AL) aims to recognize the actions and goals of one or more
 from a series of observations on the agents' actions and the environmental conditions
 [[1](#activity-recognition)].
 
-Recognition can be of different types. Here we use a sensor based approach employing
-smartphones as sensing tools. Smartphones come with embedded built-in sensors such as
-microphones, dual cameras, accelerometers, gyroscopes, etc. The use of smartphones
-with inertial sensors is an effective solution for AR.
+Recognition can be of different types. We used a sensor based approach employing
+smartphones as sensing tools. Smartphones are an effective solution for AR, because
+they come with embedded built-in sensors such as microphones, dual cameras, accelerometers,
+gyroscopes, etc.
 
-In our analysis we use public domain dataset that has been created using inertial
-data from smartphone accelerometers and gyroscopes, targeting the recognition of six
-different human activities [[1](#uci-har)].
+Using a public domain dataset [[1](#uci-har)], we built a function that predicts what
+activity a subject is performing based on the quantitative measurements from the phone.
 
 Methods
 -------
@@ -63,7 +62,7 @@ Body Angular Acceleration Magnitude   | tBodyGyroJerkMag  | fBodyGyroJerkMag
 
 #### Features
 The signals were sampled in fixed-width sliding windows of 2.56 sec and 50% 
-overlap (128 readings/window).
+overlap (128 readings/window at 50 Hz).
 From each window, a vector of features was obtained by calculating variables
 from the time and frequency domain.
 
@@ -124,7 +123,15 @@ Analysis
 --------
 
 ### Data quality
+The dataset didn't contain any NAs values.
 
+Some column names contained invalid characters such as parentheses `()`, dash `-` and
+comma `,`. Parentheses were deleted, dashes and commas were substituted with dots.
+
+Other column names were repeated three times. Presumably they contains the same feature
+value, but they refer to X, Y, Z axis. The columns were suffixed with axis symbols,
+giving to the first occurrence the symbol `.X`, to the second occurrence the symbol `.Y`,
+and to the third occurrence the symbol `.Z`.
 
 ### Predictive analysis
 
