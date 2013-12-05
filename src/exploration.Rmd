@@ -33,10 +33,10 @@ training <- samsungData[recordsForTraining,]
 test     <- samsungData[recordsForTesting,]
 ```
 
-Histogram and Boxplot for each column
--------------------------------------
+Histograms and Boxplots
+-----------------------
 
-```{r hist_box_cols, eval=FALSE}
+```{r hist_box_cols_all, eval=FALSE}
 numberVars <- ncol(training) - 2
 digits <- nchar(as.character(numberVars))
 pad <- ""; for(i in 1:digits) pad = paste(pad, "0", sep="")
@@ -56,6 +56,32 @@ for (i in 1:numberVars){
 close(pb)
 ```
 
+```{r hist_box_cols_used}
+colsUsed = c("tBodyAcc.std.X"
+             ,"tGravityAcc.mean.X"
+             ,"tGravityAcc.energy.Z"
+             ,"tGravityAcc.mean.Y"
+             ,"tGravityAcc.min.Y"
+             ,"fBodyAccJerk.bandsEnergy.17.32.Z"
+             ,"fBodyAccMag.mad"
+             ,"tBodyAcc.correlation.X.Y"
+             ,"tBodyGyro.correlation.Y.Z")
+pad <- "000"
+digits <- 3
+for (col in colsUsed){
+  i = which( colnames(training)==col )
+  number = paste(pad, i, sep="")
+  number = substring(number, nchar(number)-digits+1)
+  filename = paste("graphs/",number,".",col,".png", sep="")
+  png(filename, width=960)
+  par(mfrow = c(1, 2))
+  hist(training[,i], main=paste(number,col),
+       xlab=paste("training[,",i,"]",sep=""))
+  boxplot(training[,i] ~ training$activity, main=paste(number,col))
+  dev.off()
+}
+```
+
 Tree with all the column
 ------------------------
 
@@ -63,7 +89,7 @@ Tree with all the column
 treeAllCols <- tree(activity ~ . -subject, data=training)
 summary(treeAllCols)
 plot(treeAllCols, type="uniform")
-text(treeAllCols)
+text(treeAllCols, cex=0.8)
 ```
 
 ```{r tree_all_misc, fig.width=12, fig.height=6}
@@ -76,5 +102,5 @@ plot(cv.tree(treeAllCols))
 pruneTreeAllCols <- prune.tree(treeAllCols, best=8)
 summary(pruneTreeAllCols)
 plot(pruneTreeAllCols, type="uniform")
-text(pruneTreeAllCols)
+text(pruneTreeAllCols, cex=0.8)
 ```
