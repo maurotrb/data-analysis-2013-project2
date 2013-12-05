@@ -129,11 +129,18 @@ Some column names contained invalid characters such as parentheses `()`, dash `-
 comma `,`. Parentheses were deleted, dashes and commas were substituted with dots.
 
 Other column names were repeated three times. Presumably they contains the same feature
-value, but they refer to X, Y, Z axis. The columns were suffixed with axis symbols,
-giving to the first occurrence the symbol `.X`, to the second occurrence the symbol `.Y`,
-and to the third occurrence the symbol `.Z`.
+value, but they refer to the X, Y, Z axis. The columns were suffixed with axis symbols,
+giving to the first occurrence of the repeated column the symbol `.X`, to the second
+occurrence the symbol `.Y`, and to the third occurrence the symbol `.Z`.
 
 ### Predictive analysis
+
+We divided the dataset in:
+
+*  a training set that included data from subject 1, 3, 5, and 6, for a total of
+   1485 observations
+*  a test set that included data from subjects 27, 28, 29, and 30, for a total of
+   1315 observations
 
 
 Conclusions
