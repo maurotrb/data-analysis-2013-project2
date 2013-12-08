@@ -1,0 +1,52 @@
+digraph classification_tree {
+    label="Figure 1. Activity Recognition Using Smartphones Data Set. Classification Tree.\n ";
+    labelloc=top;
+    labeljust=center;
+    fontname="Helvetica-Bold";
+    fontsize="18";
+    pad=0.5;
+    
+    node [fontname="Helvetica", fontsize="9", colorscheme=set26]
+    tBodyAccStdX [label="tBodyAcc.std.X\n<\n-0.653415", shape=plaintext]
+    tGravityAccMeanX [label="tGravityAcc.mean.X\n<\n0.154914", shape=plaintext]
+    fBodyAccJerkBandsEnergy1732Z [label="fBodyAccJerk.bandsEnergy.17.32.Z\n<\n-0.957284", shape=plaintext]
+    laying1 [label="Laying", shape=box, style=filled, fillcolor=1, color=1, fontcolor=white, fontname="Helvetica-Bold"]
+    ftGravityAccEnergyZ [label="tGravityAcc.energy.Z\n<\n-0.97532", shape=plaintext]
+    walkup1 [label="Walkup", shape=box, style=filled, fillcolor=2, color=2, fontcolor=white, fontname="Helvetica-Bold"]
+    fBodyAccMagMad [label="fBodyAccMag.mad\n<\n-0.148988", shape=plaintext]
+    tGravityAccMeanY [label="tGravityAcc.mean.Y\n<\n0.0616947", shape=plaintext]
+    sitting1 [label="Sitting", shape=box, style=filled, fillcolor=3, color=3, fontcolor=white, fontname="Helvetica-Bold"]
+    tBodyAccCorrelationXY [label="tBodyAcc.correlation.X.Y\n<\n-0.288871", shape=plaintext]
+    tBodyGyroCorrelationYZ [label="tBodyGyro.correlation.Y.Z\n<\n0.28332", shape=plaintext]
+    tGravityAccMinY [label="tGravityAcc.min.Y\n<\n-0.18326", shape=plaintext]
+    sitting2 [label="Sitting", shape=box, style=filled, fillcolor=3, color=3, fontcolor=white, fontname="Helvetica-Bold"]
+    walkup2 [label="Walkup", shape=box, style=filled, fillcolor=2, color=2, fontcolor=white, fontname="Helvetica-Bold"]
+    walk1 [label="Walk", shape=box, style=filled, fillcolor=4, color=4, fontcolor=white, fontname="Helvetica-Bold"]
+    walkdown1 [label="Walkdown", shape=box, style=filled, fillcolor=5, color=5, fontcolor=white, fontname="Helvetica-Bold"]
+    walkup3 [label="Walkup", shape=box, style=filled, fillcolor=2, color=2, fontcolor=white, fontname="Helvetica-Bold"]
+    tGravityAccMinY2 [label="tGravityAcc.min.Y\n<\n-0.210066", shape=plaintext]
+    standing1 [label="Standing", shape=box, style=filled, fillcolor=6, color=6, fontcolor=white, fontname="Helvetica-Bold"]
+    standing2 [label="Standing", shape=box, style=filled, fillcolor=6, color=6, fontcolor=white, fontname="Helvetica-Bold"]
+    sitting3 [label="Sitting", shape=box, style=filled, fillcolor=3, color=3, fontcolor=white, fontname="Helvetica-Bold"]
+
+    tBodyAccStdX -> tGravityAccMeanX [arrowhead=none];
+    tBodyAccStdX -> fBodyAccJerkBandsEnergy1732Z [arrowhead=none];
+    tGravityAccMeanX -> laying1 [arrowhead=none];
+    tGravityAccMeanX -> ftGravityAccEnergyZ [arrowhead=none];
+    fBodyAccJerkBandsEnergy1732Z -> walkup1 [arrowhead=none];
+    fBodyAccJerkBandsEnergy1732Z -> fBodyAccMagMad [arrowhead=none];
+    ftGravityAccEnergyZ -> tGravityAccMeanY [arrowhead=none];
+    ftGravityAccEnergyZ -> sitting1 [arrowhead=none];
+    fBodyAccMagMad -> tBodyAccCorrelationXY [arrowhead=none];
+    fBodyAccMagMad -> tBodyGyroCorrelationYZ [arrowhead=none];
+    tGravityAccMeanY -> tGravityAccMinY [arrowhead=none];
+    tGravityAccMeanY -> sitting2 [arrowhead=none];
+    tBodyAccCorrelationXY -> walkup2 [arrowhead=none];
+    tBodyAccCorrelationXY -> walk1 [arrowhead=none];
+    tBodyGyroCorrelationYZ -> walkdown1 [arrowhead=none];
+    tBodyGyroCorrelationYZ -> walkup3 [arrowhead=none];
+    tGravityAccMinY -> tGravityAccMinY2 [arrowhead=none];
+    tGravityAccMinY -> standing1 [arrowhead=none];
+    tGravityAccMinY2 -> standing2 [arrowhead=none];
+    tGravityAccMinY2 -> sitting3 [arrowhead=none];
+}
